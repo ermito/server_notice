@@ -18,6 +18,12 @@
   * This function reports the error and
   * exits back to the shell:
   */
+ 
+/*
+  * 
+  *  ```\(;,;)/```    ууууууу
+  */
+ 
   void displayError(const char *on_what) {
      printf("%s\n",on_what);
      exit(1);
