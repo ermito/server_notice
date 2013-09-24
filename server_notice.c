@@ -81,14 +81,16 @@
             break;     // Quit server
         }
         printf("%s\n",dgram);
-	char *nargv[ ]={"",dgram,(char *)0};
-	
+	char  mypath[255]={0};
+	getcwd(mypath,255);
+	char icon[255]={0};
+	strcpy(icon,mypath);
+	strcpy(icon+strlen(icon),"/superuser.ico");
 	if (fork() == 0) {
-                 execl("/usr/bin/notify-send", "echo", dgram, (char *) 0);
+                 execl("/usr/bin/notify-send","notify-send","-i",icon,"Сообщение с вашего телефона:", dgram, (char *) 0);
          perror("exec one failed");
          exit(1);
 	}
-//	execv("/usr/bin/notify-send",nargv);
       }
 
      close(s);
